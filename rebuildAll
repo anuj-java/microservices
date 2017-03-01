@@ -1,0 +1,7 @@
+#!/bin/sh
+gradle build buildDocker --offline
+if [ $? -eq 0 ]; then
+    docker-compose down && docker-compose up
+else
+    echo "Build Failed"
+fi

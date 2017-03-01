@@ -1,0 +1,424 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "1.0.0",
+    "title": "API Docs"
+  },
+  "host": "localhost:8080",
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "schemes": [
+    "http"
+  ],
+  "basePath": "/BeInformed/restServices/ui",
+  "paths": {
+    "/HousingBenefitTab/HousingBenefitView/{case-id}/Decisions/EligibilityOfHousingBenefitRequest": {
+      "post": {
+        "tags": [
+          "Housing benefit tab"
+        ],
+        "summary": "POST/HousingBenefitTab/HousingBenefitView/{case-id}/Decisions/EligibilityOfHousingBenefitRequest",
+        "operationId": "POST/HousingBenefitTab/HousingBenefitView/{case-id}/Decisions/EligibilityOfHousingBenefitRequest",
+        "parameters": [
+          {
+            "name": "case-id",
+            "description": "The parameter 'case-id' contains the unique key of the case",
+            "type": "integer",
+            "in": "path"
+          },
+          {
+            "name": "body",
+            "description": "The parameter 'page' is used to select the current page",
+            "schema": {
+              "$ref": "#/definitions/DecideEligibilityOfHousingBenefitRequest"
+            },
+            "in": "body"
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "400",
+            "schema": {
+              "$ref": "#/definitions/formresponse"
+            }
+          },
+          "401": {
+            "description": "401",
+            "schema": {
+              "$ref": "#/definitions/error"
+            }
+          },
+          "403": {
+            "description": "403",
+            "schema": {
+              "$ref": "#/definitions/error"
+            }
+          },
+          "404": {
+            "description": "404",
+            "schema": {
+              "$ref": "#/definitions/error"
+            }
+          },
+          "406": {
+            "description": "406",
+            "schema": {
+              "$ref": "#/definitions/error"
+            }
+          },
+          "500": {
+            "description": "500",
+            "schema": {
+              "$ref": "#/definitions/error"
+            }
+          },
+          "200": {
+            "description": "200"
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "DecideEligibilityOfHousingBenefitRequest": {
+      "type": "object",
+      "properties": {
+        "tokens": {
+          "type": [
+            "array",
+            "null"
+          ],
+          "items": {
+            "type": "string"
+          }
+        },
+        "objects": {
+          "$ref": "#/definitions/objects_DecideEligibilityOfHousingBenefitRequest"
+        }
+      },
+      "required": [
+        "objects"
+      ],
+      "additionalProperties": false
+    },
+    "Decide_Eligibility_of_housing_benefit_request_type": {
+      "type": "object",
+      "properties": {
+        "DoYouHaveAnyDebts": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "enum": [
+            "YesDebt",
+            "NoDebt"
+          ]
+        },
+        "HowMuchDebtDoYouHave": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "DoYouHaveFinancialProtection": {
+          "type": [
+            "array",
+            "null"
+          ],
+          "items": {
+            "type": "string",
+            "enum": [
+              "YesFinancialProtection",
+              "NoFinancialProtection"
+            ]
+          }
+        },
+        "DoYouHaveARainyDayFundieSavingsOf3xYourMonthlyIncome": {
+          "type": [
+            "array",
+            "null"
+          ],
+          "items": {
+            "type": "string",
+            "enum": [
+              "NoRainyDayFund",
+              "YesRainyDayFund"
+            ]
+          }
+        }
+      },
+      "additionalProperties": false
+    },
+    "HIDE_Response_type": {
+      "type": "object",
+      "properties": {
+        "HousingBenefitDecision": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      },
+      "additionalProperties": false
+    },
+    "anchor_type": {
+      "type": "object",
+      "properties": {
+        "objectid": {
+          "title": "objectid",
+          "description": "Object identifier",
+          "type": "string"
+        },
+        "elementid": {
+          "title": "elementid",
+          "description": "Element identifier",
+          "type": "string"
+        },
+        "static": {
+          "title": "static",
+          "description": "Static properties cannot be edited",
+          "type": "string"
+        },
+        "value": {
+          "title": "value",
+          "description": "Static properties can have a value defined",
+          "type": "string"
+        },
+        "index": {
+          "title": "index",
+          "description": "Index",
+          "type": "number"
+        },
+        "suggestion": {
+          "title": "suggestion",
+          "description": "suggestion",
+          "type": "string"
+        },
+        "element": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/element_type"
+          },
+          "minItems": 0
+        }
+      },
+      "required": [
+        "objectid"
+      ],
+      "additionalProperties": false
+    },
+    "anchor_type_1": {
+      "type": "object",
+      "properties": {
+        "objectid": {
+          "title": "objectid",
+          "description": "Object identifier",
+          "type": "string"
+        },
+        "elementid": {
+          "title": "elementid",
+          "description": "Element identifier",
+          "type": "string"
+        },
+        "index": {
+          "title": "index",
+          "description": "Index",
+          "type": "number"
+        },
+        "suggestion": {
+          "title": "suggestion",
+          "description": "suggestion",
+          "type": "string"
+        },
+        "message": {
+          "title": "message",
+          "description": "Validation message",
+          "type": "string"
+        },
+        "element": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/element_type"
+          },
+          "minItems": 0
+        }
+      },
+      "required": [
+        "objectid",
+        "message"
+      ],
+      "additionalProperties": false
+    },
+    "element_type": {
+      "type": "object",
+      "properties": {
+        "elementid": {
+          "title": "elementid",
+          "description": "Element identifier",
+          "type": "string"
+        },
+        "suggestion": {
+          "title": "suggestion",
+          "description": "suggestion",
+          "type": "string"
+        }
+      },
+      "required": [
+        "elementid"
+      ],
+      "additionalProperties": false
+    },
+    "error": {
+      "type": "object",
+      "properties": {
+        "description": {
+          "title": "description",
+          "description": "description",
+          "type": "string"
+        },
+        "detail": {
+          "title": "detail",
+          "description": "detail",
+          "type": "string"
+        },
+        "trace": {
+          "title": "trace",
+          "description": "trace",
+          "type": "string"
+        }
+      },
+      "required": [
+        "description",
+        "detail"
+      ],
+      "additionalProperties": false
+    },
+    "error_type": {
+      "type": "object",
+      "properties": {
+        "anchor": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/anchor_type_1"
+          },
+          "minItems": 0
+        },
+        "param": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/param_type"
+          },
+          "minItems": 0
+        }
+      },
+      "additionalProperties": false
+    },
+    "formresponse": {
+      "type": "object",
+      "properties": {
+        "missing": {
+          "$ref": "#/definitions/missing_type"
+        },
+        "error": {
+          "$ref": "#/definitions/error_type"
+        },
+        "success": {
+          "$ref": "#/definitions/success_type"
+        },
+        "tokens": {
+          "type": [
+            "array",
+            "null"
+          ],
+          "items": {
+            "type": "string"
+          },
+          "minItems": 0
+        }
+      },
+      "additionalProperties": false
+    },
+    "missing_type": {
+      "type": "object",
+      "properties": {
+        "suggestion": {
+          "title": "suggestion",
+          "description": "suggestion",
+          "type": "string"
+        },
+        "dynamicschema": {
+          "type": "object"
+        },
+        "anchor": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/anchor_type"
+          },
+          "minItems": 0
+        },
+        "param": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/param_type"
+          },
+          "minItems": 0
+        }
+      },
+      "additionalProperties": false
+    },
+    "objects_DecideEligibilityOfHousingBenefitRequest": {
+      "type": "object",
+      "properties": {
+        "Decide_Eligibility_of_housing_benefit_request": {
+          "$ref": "#/definitions/Decide_Eligibility_of_housing_benefit_request_type"
+        },
+        "HIDE_Response": {
+          "$ref": "#/definitions/HIDE_Response_type"
+        }
+      },
+      "required": [
+        "Decide_Eligibility_of_housing_benefit_request",
+        "HIDE_Response"
+      ],
+      "additionalProperties": false
+    },
+    "param_type": {
+      "type": "object",
+      "properties": {
+        "elementid": {
+          "title": "elementid",
+          "description": "Element identifier",
+          "type": "string"
+        },
+        "message": {
+          "title": "message",
+          "description": "Validation message",
+          "type": "string"
+        }
+      },
+      "required": [
+        "elementid",
+        "message"
+      ],
+      "additionalProperties": false
+    },
+    "success_type": {
+      "type": "object",
+      "properties": {
+        "redirect": {
+          "title": "redirect",
+          "description": "Redirect uri",
+          "type": "string"
+        },
+        "data": {
+          "type": "object"
+        }
+      },
+      "additionalProperties": false
+    }
+  }
+}

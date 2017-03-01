@@ -1,0 +1,11 @@
+gateway:
+ image: microservices/gateway-service
+ ports:
+  - "8980:8980"
+ links:
+  - service1
+  - service2
+service1:
+  image: microservices/service1
+service2:
+  image: microservices/service2
