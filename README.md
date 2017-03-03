@@ -10,3 +10,9 @@
 ## Steps to Run
 
 run ./rebuildAll from the terminal
+
+## Swagger URL's to use for /service2
+
+1. http://localhost:8280/swagger-ui.html
+2. http://localhost:8280/v2/api-docs?group=car-api (returns Swagger Spec json)
+

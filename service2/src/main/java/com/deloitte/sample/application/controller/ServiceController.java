@@ -1,8 +1,11 @@
 package com.deloitte.sample.application.controller;
 
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import com.deloitte.sample.application.model.Car;
+import com.deloitte.sample.application.service.CarService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 /**
  * Created by akothiyal on 27/01/2017.
@@ -13,9 +16,28 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class ServiceController {
 
+    @Autowired
+    CarService carService;
+
     @RequestMapping("/")
     public Employer getPersonDetails(@RequestParam(name = "name",  defaultValue = "AK") String name){
         return new Employer(name);
+    }
+
+    @RequestMapping(path = "/cars/{registrationNo}", method = RequestMethod.GET)
+    public Car getCar(@PathVariable(value = "registrationNo") int registrationNo){
+        return carService.getCarInformation(registrationNo);
+    }
+
+    @RequestMapping(path = "/cars", method = RequestMethod.GET)
+    public List<Car> getCars(){
+        return carService.getCars();
+    }
+
+    @RequestMapping(path = "/cars/add",method = RequestMethod.POST)
+    public Long addCarInfo(@RequestBody Car car){
+
+        return carService.addCarInformation(car);
     }
 
     public class Employer {
