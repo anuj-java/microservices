@@ -1,0 +1,17 @@
+syntax = "proto3";
+
+option java_package = "com.deloitte.sample.application";
+option java_outer_classname = "OuterSample";
+option java_multiple_files = true;
+
+
+message Employee {
+    string name = 1;
+    Address address = 2;
+}
+
+message Address {
+
+    int32 flatNumber = 1;
+    string streetName = 2;
+}
